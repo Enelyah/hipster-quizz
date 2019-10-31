@@ -1,0 +1,90 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin:0;
+    padding:0;
+    font-family: Baloo, cursive;
+    overflow-x: hidden;
+}
+
+img {
+    max-width:100%;
+
+}
+
+h1 {
+    text-align:center;
+    position: relative;
+    z-index: 1111;
+   }
+
+.left-screen-blank {
+    width: 50%;
+    min-height: 100vh;
+    position: absolute;
+    left:0px; top:0px;
+    cursor: w-resize;
+    background-color: tomato;
+    z-index: 1;
+}   
+
+.right-screen-blank {
+    width: 50%;
+    min-height: 100vh;
+    position: absolute;
+    right:0px; top:0px;
+    cursor: e-resize;
+    background-color: teal;
+    z-index: 1;
+} 
+
+.stackedcards {
+    height:60vh;
+    width: 30%;
+    position: relative;
+    z-index: 1111;
+    margin: 0 auto;
+    display:flex;
+    justify-content: center;
+}   
+
+
+img.first-card {
+    height:60vh;
+    margin:12vh auto;
+    position: absolute;
+    z-index: 1111
+}
+
+img.second-card {
+    width:95%;
+    height:95%;
+    margin:12vh auto;
+    position: absolute; top:-1em; 
+    z-index: 1110
+}
+
+img.third-card {
+    width:90%;
+    height:90%;
+    align-self:right;
+    margin:12vh auto;
+    position: absolute; top:-2em;
+    z-index: 1109
+}
+
+img.fourth-card {
+    width:85%;
+    height:85%;
+    margin:12vh auto;
+    position: absolute; top:-3em; 
+    z-index: 1108
+}
+
+.background-text {
+    font-size: 200%;
+    margin-top: 50vh;
+    text-align: center
+}
