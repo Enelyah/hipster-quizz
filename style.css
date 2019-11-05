@@ -51,14 +51,14 @@ h1 {
 }   
 
 
-img.first-card {
+.firstCard {
     height:60vh;
     margin:12vh auto;
     position: absolute;
     z-index: 1111
 }
 
-img.second-card {
+.secondCard {
     width:95%;
     height:95%;
     margin:12vh auto;
@@ -66,7 +66,7 @@ img.second-card {
     z-index: 1110
 }
 
-img.third-card {
+.thirdCard {
     width:90%;
     height:90%;
     align-self:right;
@@ -75,7 +75,7 @@ img.third-card {
     z-index: 1109
 }
 
-img.fourth-card {
+.fourthCard {
     width:85%;
     height:85%;
     margin:12vh auto;
@@ -88,3 +88,62 @@ img.fourth-card {
     margin-top: 50vh;
     text-align: center
 }
+
+
+/*ANIMATIONS*/
+
+@keyframes swipeRight {
+    0% {
+    margin-left: 0;  
+    transform: rotate(0deg);
+    animation-timing-function: ease-in;
+    }
+
+    30% {
+        margin-left: 100%;
+        transform: rotate(20deg);
+        animation-timing-function: ease-out;
+        }
+  
+    100% {
+    margin-left: 500%;
+    transform: rotate(45deg);
+    }
+  }
+
+  @keyframes swipeLeft {
+    0% {
+    margin-right: 0;  
+    transform: rotate(0deg);
+   animation-timing-function: ease-in;
+    }
+
+    30% {
+    margin-left: -100%;
+    transform: rotate(-20deg);
+   animation-timing-function: ease-out;
+    }
+  
+    100% {
+    margin-left: -500%;
+    transform: rotate(-45deg);
+    }
+  }
+
+  .swipeRight {
+    height:60vh;
+    margin:12vh auto;
+    position: absolute;
+    z-index: 1111;
+    animation-name: swipeRight;
+    animation-duration: 0.3s;
+  }
+
+  .swipeLeft {
+    height:60vh;
+    margin:12vh auto;
+    position: absolute;
+    z-index: 1111;
+    animation-name: swipeLeft;
+    animation-duration: 0.3s;
+  }
