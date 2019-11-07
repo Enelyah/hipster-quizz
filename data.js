@@ -1,4 +1,4 @@
-var stackOfCards =[
+const stackOfCards =[
     { name:"test1", isHip:true, source: "./images/test-image.jpg" },
     { name:"test2", isHip:true, source: "./images/test-image-HIP.jpg" },
     { name:"test3", isHip:true, source: "./images/test-image-HIP-2.jpg" },
@@ -10,3 +10,9 @@ var stackOfCards =[
     { name:"test9", isHip:false, source: "./images/test-image-NOTHIP-3.jpg" },
     { name:"test10", isHip:false, source: "./images/test-image-NOTHIP-4.jpg" }
 ]
+
+const playedCards=[];
+
+const winCards=[];
+
+const loseCards=[];

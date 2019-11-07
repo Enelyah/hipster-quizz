@@ -1,3 +1,7 @@
+let $introPage = document.getElementById("intro-page");
+let $tutorialPage = document.getElementById("tutorial-page");
+let $mainPage = document.getElementById("main-page");
+let $resultsPage = document.getElementById("results-page");
 
 let $leftScreen = document.querySelector('.left-screen-blank');
 let $rightScreen = document.querySelector('.right-screen-blank');
@@ -6,6 +10,16 @@ let $topCard = document.getElementById("topCard");
 let $secondCard = document.getElementById("2ndCard");
 let $thirdCard = document.getElementById("3rdCard");
 let $fourthCard = document.getElementById("4thCard");
+
+let $stopPlayingButton = document.getElementById("stopPlaying");
+
+let $audioWin = document.createElement("audio");
+$audioWin.setAttribute("src", "sounds/Winning.mp3");
+
+let $audioLose = document.createElement("audio");
+$audioLose.setAttribute("src", "sounds/Losing.mp3");
+
+let $resultsTitle= document.querySelector('#results-page>h2')
 
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -21,65 +35,111 @@ $secondCard.setAttribute("src",stackOfCards[1].source)
 $thirdCard.setAttribute("src",stackOfCards[2].source)
 $fourthCard.setAttribute("src",stackOfCards[3].source)
 
+let currentCardIndex = 0;
+let currentCard = stackOfCards[currentCardIndex];
+let nextCardIndex = 3;
+let nextCard = stackOfCards[nextCardIndex];
 
-// j'ai essayé d'updater les images soit en changeant la source soit en changeant la classe (donc le z index)
-let cardIndex = 3;
 function changeCards(){
-    cardIndex++;
-    let card = stackOfCards[cardIndex];
-   // $topCard.setAttribute("src",$secondCard.getAttribute("src"));
-   // $secondCard.setAttribute("src",$thirdCard.getAttribute("src"));
-  //  $thirdCard.setAttribute("src",$fourthCard.getAttribute("src"));
-    $topCard.className="fourthCard";
-    $secondCard.className="firstCard";
-    $thirdCard.className="secondCard";
-    $fourthCard.className="thirdCard";
-    $fourthCard.setAttribute("src",card.source);
-
-}
-
-$leftScreen.addEventListener("click", function(e) {
-    e.preventDefault;
-    $topCard.classList.remove("swipeLeft");
-    $topCard.classList.remove("swipeRight");
-    $secondCard.className="secondCard";
-    $thirdCard.className="thirdCard";
-    $fourthCard.className="fourthCard";
-    void $topCard.offsetWidth;
-    void $secondCard.offsetWidth;
-    void $thirdCard.offsetWidth;
-    void $fourthCard.offsetWidth;
-    $topCard.classList.add("swipeLeft");
-    setTimeout(changeCards,300)
-  }, false);
-
-  $rightScreen.addEventListener("click", function(e) {
-    e.preventDefault;
-    $topCard.classList.remove("swipeLeft");
-    $topCard.classList.remove("swipeRight");
-    void $topCard.offsetWidth;
-    $topCard.classList.add("swipeRight");
-    setTimeout(changeCards,300)
-  }, false);
-
-/*
-$leftScreen.onclick = function left(event) {
-    //$topCard.className ='swipeLeft';
-    $topCard.classList.add("swipeLeft");
+    nextCardIndex++;
+    nextCard = stackOfCards[nextCardIndex];
     $topCard.setAttribute("src",$secondCard.getAttribute("src"));
     $secondCard.setAttribute("src",$thirdCard.getAttribute("src"));
     $thirdCard.setAttribute("src",$fourthCard.getAttribute("src"));
-    cardIndex++;
-    $fourthCard.setAttribute("src",card.source);
-   // let $endCardLeft = document.querySelector('.swipeLeft');
-    //setTimeout($endCardLeft.className='firstCard',300);
-    setTimeout($topCard.classList.remove("swipeLeft"),300);
-      };
-$rightScreen.onclick = function right(event) {
-$firstCard.className ='swipeRight';
-   $firstCard=$secondCard;
-   $secondCard=$thirdCard;
-   $thirdCard=$fourthCard;
-   $fourthCard.setAttribute("src",nextCard.source)
-     };
-      */
+    $fourthCard.setAttribute("src",nextCard.source);
+}
+
+function stopAudio(){
+  $audioWin.currentTime = 0;
+  $audioWin.pause();
+  $audioLose.currentTime = 0;
+  $audioLose.pause();
+}
+
+function updateScoreLeft(){
+  // if click-left AND card.isHip===false > WIN
+  // if click-left AND card.isHip===true > LOSE
+  currentCard = stackOfCards[currentCardIndex];
+  if (currentCard.isHip){
+    loseCards.push(currentCard);
+    $audioLose.play();
+    console.log("LOSE")
+    console.log("loseCards array:",loseCards)
+  } else {
+    winCards.push(currentCard);
+    $audioWin.play();
+    console.log("WIN")    
+    console.log("winCards array:",winCards)
+  }
+  currentCardIndex++;
+}
+
+function updateScoreRight(){
+  // if click-right AND card.isHip===true > WIN
+  // if click-right AND card.isHip===false > LOSE
+  currentCard = stackOfCards[currentCardIndex];
+  if (currentCard.isHip){
+    winCards.push(currentCard)
+    $audioWin.play();
+    console.log("WIN")
+    console.log("winCards array:",winCards)
+  } else {
+    loseCards.push(currentCard)
+    $audioLose.play();
+    console.log("LOSE")
+    console.log("loseCards array:",loseCards)
+  }
+  currentCardIndex++;
+}
+ 
+function giveResults(){
+if (winCards.length>loseCards.length){
+  $resultsTitle.innerHTML="You're quite good at this!"
+} else if (loseCards.length>winCards.length){
+  $resultsTitle.innerHTML="You're sh*t at this!"
+} else {
+  $resultsTitle.innerHTML="You're halfway there!"
+};
+let $resultsPlayedCards = document.createElement("div")
+$resultsPlayedCards.innerHTML=`You played ${playedCards.length} cards`
+$resultsPage.appendChild($resultsPlayedCards)
+let $resultsWinCards = document.createElement("div")
+$resultsWinCards.innerHTML=`You guessed ${winCards.length} cards correctly`
+$resultsPage.appendChild($resultsWinCards)
+let $resultsLoseCards = document.createElement("div")
+$resultsLoseCards.innerHTML=`You got ${loseCards.length} cards wrong`
+$resultsPage.appendChild($resultsLoseCards)
+}
+
+
+$leftScreen.addEventListener("click", function(e) {
+  e.preventDefault;
+  stopAudio()
+  $topCard.classList.remove("swipeLeft");
+  $topCard.classList.remove("swipeRight");
+  setTimeout(function() {
+    $topCard.classList.add("swipeLeft");
+    setTimeout(changeCards, 300)
+  }, 0);
+  updateScoreLeft();
+}, false);
+
+$rightScreen.addEventListener("click", function(e) {
+  stopAudio()
+  e.preventDefault;
+  $topCard.classList.remove("swipeLeft");
+  $topCard.classList.remove("swipeRight");
+  setTimeout(function() {
+    $topCard.classList.add("swipeRight");
+    setTimeout(changeCards,300)
+  }, 0);
+  updateScoreRight();
+}, false);
+
+$stopPlayingButton.addEventListener("click", function(e) {
+  e.preventDefault;
+  stopAudio()
+  $mainPage.className="inactive"
+  $resultsPage.className="active"
+  giveResults()
+}, false);

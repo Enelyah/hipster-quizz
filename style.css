@@ -13,6 +13,27 @@ img {
     max-width:100%;
 
 }
+/* section {
+    height:100vh;
+} */
+
+.btn {
+    position:absolute;
+    z-index:2;
+    margin-top: 180px;
+    padding: 10px 20px;
+    text-transform: uppercase;
+}
+
+.button-zone {
+
+    display: flex;
+    justify-content: center;
+}
+
+.inactive {
+    display:none
+}
 
 h1 {
     text-align:center;
@@ -48,9 +69,15 @@ h1 {
     margin: 0 auto;
     display:flex;
     justify-content: center;
+    pointer-events:none;
 }   
 
-
+h3 {
+    position: relative;
+    margin-top:40vh;
+    text-align:center;
+    z-index: 1113  
+}
 .firstCard {
     height:60vh;
     margin:12vh auto;
@@ -59,7 +86,7 @@ h1 {
 }
 
 .secondCard {
-    width:95%;
+    /* width:95%; */
     height:95%;
     margin:12vh auto;
     position: absolute; top:-1em; 
@@ -67,7 +94,7 @@ h1 {
 }
 
 .thirdCard {
-    width:90%;
+    /* width:90%; */
     height:90%;
     align-self:right;
     margin:12vh auto;
@@ -76,7 +103,7 @@ h1 {
 }
 
 .fourthCard {
-    width:85%;
+    /* width:85%; */
     height:85%;
     margin:12vh auto;
     position: absolute; top:-3em; 
