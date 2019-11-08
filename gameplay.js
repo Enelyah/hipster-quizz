@@ -121,6 +121,7 @@ $leftScreen.addEventListener("click", function(e) {
     $topCard.classList.add("swipeLeft");
     setTimeout(changeCards, 300)
   }, 0);
+  playedCards.push(currentCard);
   updateScoreLeft();
 }, false);
 
@@ -133,6 +134,7 @@ $rightScreen.addEventListener("click", function(e) {
     $topCard.classList.add("swipeRight");
     setTimeout(changeCards,300)
   }, 0);
+  playedCards.push(currentCard);
   updateScoreRight();
 }, false);
 

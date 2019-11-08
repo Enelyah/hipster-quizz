@@ -7,15 +7,25 @@ body {
     padding:0;
     font-family: Baloo, cursive;
     overflow-x: hidden;
+   
 }
 
 img {
     max-width:100%;
 
 }
-/* section {
+section {
     height:100vh;
-} */
+}
+
+#main-page {
+    background-image: url(images/2-birds-background-crop.jpg);
+    background-size: cover;
+    max-width: 100%;
+    /* margin:-130px auto 130px auto; */
+    padding:0;
+}
+
 
 .btn {
     position:absolute;
@@ -47,7 +57,7 @@ h1 {
     position: absolute;
     left:0px; top:0px;
     cursor: w-resize;
-    background-color: tomato;
+    /* background-color: tomato; */
     z-index: 1;
 }   
 
@@ -57,7 +67,7 @@ h1 {
     position: absolute;
     right:0px; top:0px;
     cursor: e-resize;
-    background-color: teal;
+    /* background-color: teal; */
     z-index: 1;
 } 
 
@@ -128,7 +138,7 @@ h3 {
 
     30% {
         margin-left: 100%;
-        transform: rotate(20deg);
+        transform: rotate(15deg);
         animation-timing-function: ease-out;
         }
   
@@ -147,13 +157,13 @@ h3 {
 
     30% {
     margin-left: -100%;
-    transform: rotate(-20deg);
+    transform: rotate(-15deg);
    animation-timing-function: ease-out;
     }
   
     100% {
     margin-left: -500%;
-    transform: rotate(-45deg);
+    transform: rotate(-35deg);
     }
   }
 
