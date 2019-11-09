@@ -9,23 +9,13 @@
     <link href="https://fonts.googleapis.com/css?family=Baloo&display=swap" rel="stylesheet">
 </head>
 <body>
-   
-
-    <!--INTRO PAGE STARTS HERE === INTRO PAGE STARTS HERE === INTRO PAGE STARTS HERE === INTRO PAGE STARTS HERE-->
-    <section id="intro-page" class="inactive">
-            <p>intro page</p>
-    </section>
-
-    <!--TUTORIAL PAGE STARTS HERE === TUTORIAL PAGE STARTS HERE === TUTORIAL PAGE STARTS HERE === TUTORIAL PAGE STARTS HERE-->
-    <section id="tutorial-page" class="inactive">
-            <p>tutorial page</p>
-    </section>
 
     <!--MAIN GAME PAGE STARTS HERE === MAIN GAME PAGE STARTS HERE === MAIN GAME PAGE STARTS HERE === MAIN GAME PAGE STARTS HERE-->
 
     <section id = "main-page" class="active">
         <header>
             <h1>THE ULTIMATE HIPSTER QUIZZ</h1>
+            <h3>Can you recognize what makes a true hipster?</h2>
         </header>
         <div class="left-screen-background">
         </div>
@@ -33,13 +23,12 @@
         </div>
             <div class ="cards-container">
                 <div class='stackedcards'>
-                    <img id="topCard" class="polaroid firstCard" src="" alt=""/>
-                    <img id="2ndCard" class="polaroid secondCard" src="" alt=""/>
-                    <img id="3rdCard" class="polaroid thirdCard" src="" alt=""/>
+                    <img id="topCard" class="polaroid firstCard" src="images/square-images/green.jpg" alt=""/>
+                    <img id="2ndCard" class="polaroid secondCard" src="images/square-images/red.jpg" alt=""/>
+                    <img id="3rdCard" class="polaroid thirdCard" src="images/square-images/purple.jpg" alt=""/>
                     <img id="4thCard" class="polaroid fourthCard" src="" alt=""/>
                 </div>
-                <p id='feedback-text'>test</p>
-                <div class='stack-overlay'></div>
+                <p id='feedback-text'></p>
                 </div>
             </div>
             <div class="left-screen-blank">
@@ -47,7 +36,8 @@
             <div class="right-screen-blank">
             </div>
         <div class="button-zone">
-            <button class= "btn" id="stopPlaying">This is boring, give me my score</button>
+            <button class= "btn" id="startPlaying">Got it, let's get this started</button>
+            <button class= "inactive" id="stopPlaying">This is boring, give me my score</button>
         </div>
     </section>
 

@@ -1,7 +1,5 @@
 // VARIABLES DECLARATIONS
 
-let $introPage = document.getElementById("intro-page");
-let $tutorialPage = document.getElementById("tutorial-page");
 let $mainPage = document.getElementById("main-page");
 let $resultsPage = document.getElementById("results-page");
 
@@ -21,6 +19,7 @@ $audioWin.setAttribute("src", "sounds/Winning.mp3");
 let $audioLose = document.createElement("audio");
 $audioLose.setAttribute("src", "sounds/Losing.mp3");
 
+let $startPlayingButton = document.getElementById("startPlaying");
 let $stopPlayingButton = document.getElementById("stopPlaying");
 
 let $resultsTitle = document.querySelector('#results-page h2')
@@ -37,18 +36,24 @@ function shuffle(array) {
         [array[i], array[j]] = [array[j], array[i]];
     }
 };
-
-shuffle(stackOfCards);
-
-$topCard.setAttribute("src",stackOfCards[0].source)
-$secondCard.setAttribute("src",stackOfCards[1].source)
-$thirdCard.setAttribute("src",stackOfCards[2].source)
-$fourthCard.setAttribute("src",stackOfCards[3].source)
-
 let currentCardIndex = 0;
 let currentCard = stackOfCards[currentCardIndex];
 let nextCardIndex = 3;
 let nextCard = stackOfCards[nextCardIndex];
+
+$startPlayingButton.addEventListener("click", function(e) {
+  e.preventDefault;
+  currentCardIndex = 0;
+  nextCardIndex = 3;
+  console.log("start")
+  shuffle(stackOfCards);
+  $topCard.setAttribute("src",stackOfCards[0].source);
+  $secondCard.setAttribute("src",stackOfCards[1].source);
+  $thirdCard.setAttribute("src",stackOfCards[2].source);
+  $fourthCard.setAttribute("src",stackOfCards[3].source);
+  $startPlayingButton.className="inactive";
+  $stopPlayingButton.className="btn";
+}, false);
 
 function changeCards(){
     nextCardIndex++;
@@ -99,6 +104,7 @@ function updateScoreLeft(){
   // if click-left AND card.isHip===false > WIN
   // if click-left AND card.isHip===true > LOSE
   currentCard = stackOfCards[currentCardIndex];
+  console.log(currentCardIndex)
   if (currentCard.isHip){
     setTimeout(function() {
       $leftScreen.classList.add("feedback-lose")
@@ -121,6 +127,7 @@ function updateScoreRight(){
   // if click-right AND card.isHip===true > WIN
   // if click-right AND card.isHip===false > LOSE
   currentCard = stackOfCards[currentCardIndex];
+  console.log(currentCardIndex)
   if (currentCard.isHip){
     setTimeout(function() {
       $rightScreen.classList.add("feedback-win")
@@ -150,11 +157,11 @@ if (winCards.length>loseCards.length){
   $resultsTitle.innerHTML="You're halfway there!"
 };
 
-$resultsPlayedCards.innerHTML=`You played ${playedCards.length} cards`
+$resultsPlayedCards.innerHTML=`You played ${playedCards.length-2} cards`
 $resultsBlock.appendChild($resultsPlayedCards)
-$resultsWinCards.innerHTML=`You guessed ${winCards.length} cards correctly`
+$resultsWinCards.innerHTML=`You guessed ${winCards.length-1} cards correctly`
 $resultsBlock.appendChild($resultsWinCards)
-$resultsLoseCards.innerHTML=`You got ${loseCards.length} cards wrong`
+$resultsLoseCards.innerHTML=`You got ${loseCards.length-1} cards wrong`
 $resultsBlock.appendChild($resultsLoseCards)
 }
 
