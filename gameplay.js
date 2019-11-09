@@ -11,13 +11,15 @@ let $secondCard = document.getElementById("2ndCard");
 let $thirdCard = document.getElementById("3rdCard");
 let $fourthCard = document.getElementById("4thCard");
 
-let $stopPlayingButton = document.getElementById("stopPlaying");
+let $feedbackText = document.getElementById("feedback-text");
 
 let $audioWin = document.createElement("audio");
 $audioWin.setAttribute("src", "sounds/Winning.mp3");
 
 let $audioLose = document.createElement("audio");
 $audioLose.setAttribute("src", "sounds/Losing.mp3");
+
+let $stopPlayingButton = document.getElementById("stopPlaying");
 
 let $resultsTitle= document.querySelector('#results-page>h2')
 
@@ -56,22 +58,53 @@ function stopAudio(){
   $audioLose.pause();
 }
 
+function displayFeedback(array,color){
+  
+  var num = Math.floor(Math.random() * (array.length));
+  $feedbackText.innerHTML=array[num];
+  $feedbackText.style.color=color;
+  $feedbackText.className="feedback-text"
+  setTimeout(function() {
+    $feedbackText.className="inactive"
+  }, 700);
+};
+
+function lose(){
+  loseCards.push(currentCard);
+  $audioLose.play();
+  displayFeedback(feedbackLose, "red");
+  console.log("LOSE");
+  console.log("loseCards array:",loseCards);
+}
+
+function win(){
+  winCards.push(currentCard);
+  $audioWin.play();
+  displayFeedback(feedbackWin, "green");
+  console.log("WIN");   
+  console.log("winCards array:",winCards);
+}
+
 function updateScoreLeft(){
   // if click-left AND card.isHip===false > WIN
   // if click-left AND card.isHip===true > LOSE
   currentCard = stackOfCards[currentCardIndex];
   if (currentCard.isHip){
-    loseCards.push(currentCard);
-    $audioLose.play();
-    console.log("LOSE")
-    console.log("loseCards array:",loseCards)
+    setTimeout(function() {
+      $leftScreen.classList.add("feedback-lose")
+    }, 0);
+    lose();
   } else {
-    winCards.push(currentCard);
-    $audioWin.play();
-    console.log("WIN")    
-    console.log("winCards array:",winCards)
+    setTimeout(function() {
+      $leftScreen.classList.add("feedback-win")
+    }, 0);
+    win()
   }
   currentCardIndex++;
+  setTimeout(function() {
+    $leftScreen.classList.remove("feedback-lose");
+    $leftScreen.classList.remove("feedback-win");
+  }, 800);
 }
 
 function updateScoreRight(){
@@ -79,17 +112,21 @@ function updateScoreRight(){
   // if click-right AND card.isHip===false > LOSE
   currentCard = stackOfCards[currentCardIndex];
   if (currentCard.isHip){
-    winCards.push(currentCard)
-    $audioWin.play();
-    console.log("WIN")
-    console.log("winCards array:",winCards)
+    setTimeout(function() {
+      $rightScreen.classList.add("feedback-win")
+    }, 0);
+    win()
   } else {
-    loseCards.push(currentCard)
-    $audioLose.play();
-    console.log("LOSE")
-    console.log("loseCards array:",loseCards)
+    setTimeout(function() {
+      $rightScreen.classList.add("feedback-lose")
+    }, 0);
+    lose()
   }
   currentCardIndex++;
+  setTimeout(function() {
+    $rightScreen.classList.remove("feedback-lose");
+    $rightScreen.classList.remove("feedback-win");
+  }, 800);
 }
  
 function giveResults(){
@@ -119,7 +156,7 @@ $leftScreen.addEventListener("click", function(e) {
   $topCard.classList.remove("swipeRight");
   setTimeout(function() {
     $topCard.classList.add("swipeLeft");
-    setTimeout(changeCards, 300)
+    setTimeout(changeCards, 350)
   }, 0);
   playedCards.push(currentCard);
   updateScoreLeft();
@@ -132,7 +169,7 @@ $rightScreen.addEventListener("click", function(e) {
   $topCard.classList.remove("swipeRight");
   setTimeout(function() {
     $topCard.classList.add("swipeRight");
-    setTimeout(changeCards,300)
+    setTimeout(changeCards,350)
   }, 0);
   playedCards.push(currentCard);
   updateScoreRight();

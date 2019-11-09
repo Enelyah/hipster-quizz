@@ -21,74 +21,117 @@ section {
 }
 
 #main-page {
-    /* background-image: url(images/2-birds-background-crop.jpg);
-    background-size: cover; */
     max-width: 100%;
     padding:0;
 }
 
+#results-page {
+    background-image: url(images/background/results-bird-169.jpg);
+    background-size: cover;
+}
 
 .btn {
-    margin-top: 180px;
-    padding: 10px 20px;
+    width:20vw;
+    height: 50px;
+    text-align:center;
+    padding: 5px 10px;
     text-transform: uppercase;
+    display:block;
+    background:white;
+    border: 3px solid purple;
+    color:purple;
+    font-size:1em;
+    font-family: Baloo, cursive;
 }
 
 .button-zone {
-
     display: flex;
     justify-content: center;
 }
 
 #stopPlaying {
     position:absolute;
-    bottom: 70px;
+    bottom: 80px;
     z-index:2;
+    
 }
 
 .inactive {
     display:none
 }
 
+header {
+    padding-bottom:50px;
+}
+
 h1 {
+    margin: 30px auto;
+    padding: 10px 20px;
+    width:50vw;
+    height: 80px;
     text-align:center;
     position: relative;
     z-index: 1111;
+    font-size: 2.5em;
+    display:block;
+    background:white;
+    border: 3px solid purple;
+    color:purple;
    }
+
+.left-screen-background {
+    width: 50%;
+    min-height: 100vh;
+    position: fixed;
+    left:0px; top:0px;
+    cursor: w-resize;
+    background-image: url(images/background/2-birds-background-130-left.jpg);
+    background-size: cover;
+    backdrop-filter: red(100%);
+    z-index: 1;
+}   
+
+.right-screen-background {
+    width: 50%;
+    min-height: 100vh;
+    position: fixed;
+    right:0px; top:0px;
+    cursor: e-resize;
+    background-image: url(images/background/2-birds-background-130-right.jpg);
+    background-size: cover;
+    z-index: 1;
+} 
 
 .left-screen-blank {
     width: 50%;
     min-height: 100vh;
-    position: absolute;
+    position: fixed;
     left:0px; top:0px;
     cursor: w-resize;
-    background-image: url(images/2-birds-background-130-left.jpg);
-    background-size: cover;
     z-index: 1;
+    opacity: 0;
 }   
 
 .right-screen-blank {
     width: 50%;
     min-height: 100vh;
-    position: absolute;
+    position: fixed;
     right:0px; top:0px;
     cursor: e-resize;
-    background-image: url(images/2-birds-background-130-right.jpg);
-    background-size: cover;
     z-index: 1;
+    opacity: 0;
 } 
 
 .cards-container {
-    height:60vh;
+    margin-top:30px;
+    height:60vh;    
 }
-
 
 .stackedcards {
     width: 30%;
-    height: auto;
     position: relative;
     z-index: 1111;
-    margin: 0 auto;
+    margin: auto;
     display:flex;
     justify-content: center;
     pointer-events:none;
@@ -99,37 +142,37 @@ h1 {
     width: inherit; 
     background: white;
     padding: 20px 20px 50px;
-    box-shadow: 0 4px 6px rgba(0,0,0,.3);
+    box-shadow: 0 6px 8px rgba(0,0,0,.5);
 }
 
 .firstCard {
     width:100%;
-    margin:12vh auto;
+    /* margin:10vh auto; */
     position: absolute;
     z-index: 1111
 }
 
 .secondCard {
-    width:95%;
-    margin:12vh auto;
-    position: absolute; top:-1em; 
+    width:97%;
+    /* margin:10vh auto; */
+    position: absolute; top:-0.5em; 
     z-index: 1110
 }
 
 .thirdCard {
-    width:90%;
-    align-self:right;
-    margin:12vh auto;
-    position: absolute; top:-2em;
+    width:94%;
+    /* margin:10vh auto; */
+    position: absolute; top:-1em;
     z-index: 1109
 }
 
 .fourthCard {
-    width:85%;
-    margin:12vh auto;
-    position: absolute; top:-3em; 
+    width: 91%;
+    /* margin:10vh auto; */
+    position: absolute; top:-1.5em; 
     z-index: 1108
 }
+
 
 
 /*ANIMATIONS*/
@@ -142,9 +185,9 @@ h1 {
     }
 
     30% {
-        margin-left: 100%;
-        transform: rotate(15deg);
-        animation-timing-function: ease-out;
+    margin-left: 100%;
+    transform: rotate(15deg);
+    animation-timing-function: ease-out;
         }
   
     100% {
@@ -153,17 +196,17 @@ h1 {
     }
   }
 
-  @keyframes swipeLeft {
+@keyframes swipeLeft {
     0% {
     margin-right: 0;  
     transform: rotate(0deg);
-   animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
     }
 
     30% {
     margin-left: -100%;
     transform: rotate(-15deg);
-   animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
     }
   
     100% {
@@ -172,20 +215,68 @@ h1 {
     }
   }
 
-  .swipeRight {
-    height:60vh;
-    margin:12vh auto;
+.swipeRight {
     position: absolute;
     z-index: 1111;
     animation-name: swipeRight;
-    animation-duration: 0.3s;
+    animation-duration: 0.35s;
   }
 
-  .swipeLeft {
-    height:60vh;
-    margin:12vh auto;
+.swipeLeft {
     position: absolute;
     z-index: 1111;
     animation-name: swipeLeft;
-    animation-duration: 0.3s;
+    animation-duration: 0.35s;
   }
+
+@keyframes feedback {
+    0% {
+    font-size: 2em;  
+    opacity:1;
+    animation-timing-function: ease-in;
+    }
+
+    30% {
+    font-size: 4em; 
+    opacity:1;
+    animation-timing-function: ease-out;
+    }
+  
+    100% {
+    font-size: 6em; 
+    opacity:0;
+    }
+  }
+
+.feedback-text {
+    text-transform: uppercase;
+    text-shadow: 0 20px 5px rgba(255, 255, 255, 0.5);
+    position: relative;
+    top:-100px;
+    z-index: 1120;
+    text-align: center; 
+    animation-name: feedback;
+    animation-duration: 0.8s;
+}
+
+@keyframes fadeout {
+    0% {
+    opacity:0.5;
+    animation-timing-function: ease-in;
+    }
+  
+    100% {
+    opacity:0;
+    }
+  }
+
+.feedback-win {
+    background: green;
+    animation-name: fadeout;
+    animation-duration: 0.8s;
+}
+.feedback-lose {
+    background: red;
+    animation-name: fadeout;
+    animation-duration: 0.8s;
+}
