@@ -16,12 +16,13 @@ img {
 }
 
 section {
+    position: relative;
     height:100vh;
 }
 
 #main-page {
-    background-image: url(images/2-birds-background-crop.jpg);
-    background-size: cover;
+    /* background-image: url(images/2-birds-background-crop.jpg);
+    background-size: cover; */
     max-width: 100%;
     padding:0;
 }
@@ -61,7 +62,8 @@ h1 {
     position: absolute;
     left:0px; top:0px;
     cursor: w-resize;
-    /* background-color: tomato; */
+    background-image: url(images/2-birds-background-130-left.jpg);
+    background-size: cover;
     z-index: 1;
 }   
 
@@ -71,7 +73,8 @@ h1 {
     position: absolute;
     right:0px; top:0px;
     cursor: e-resize;
-    /* background-color: teal; */
+    background-image: url(images/2-birds-background-130-right.jpg);
+    background-size: cover;
     z-index: 1;
 } 
 
