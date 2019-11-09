@@ -1,3 +1,5 @@
+// VARIABLES DECLARATIONS
+
 let $introPage = document.getElementById("intro-page");
 let $tutorialPage = document.getElementById("tutorial-page");
 let $mainPage = document.getElementById("main-page");
@@ -21,7 +23,13 @@ $audioLose.setAttribute("src", "sounds/Losing.mp3");
 
 let $stopPlayingButton = document.getElementById("stopPlaying");
 
-let $resultsTitle= document.querySelector('#results-page>h2')
+let $resultsTitle = document.querySelector('#results-page h2')
+let $resultsBlock = document.querySelector(".results")
+let $resultsPlayedCards = document.getElementById("results-played");
+let $resultsWinCards = document.getElementById("results-win");
+let $resultsLoseCards = document.getElementById("results-lose");
+
+// CARDS FUNCTIONS
 
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -50,6 +58,8 @@ function changeCards(){
     $thirdCard.setAttribute("src",$fourthCard.getAttribute("src"));
     $fourthCard.setAttribute("src",nextCard.source);
 }
+
+// WIN-LOSE
 
 function stopAudio(){
   $audioWin.currentTime = 0;
@@ -128,6 +138,8 @@ function updateScoreRight(){
     $rightScreen.classList.remove("feedback-win");
   }, 800);
 }
+
+// RESULTS PAGE
  
 function giveResults(){
 if (winCards.length>loseCards.length){
@@ -137,16 +149,16 @@ if (winCards.length>loseCards.length){
 } else {
   $resultsTitle.innerHTML="You're halfway there!"
 };
-let $resultsPlayedCards = document.createElement("div")
+
 $resultsPlayedCards.innerHTML=`You played ${playedCards.length} cards`
-$resultsPage.appendChild($resultsPlayedCards)
-let $resultsWinCards = document.createElement("div")
+$resultsBlock.appendChild($resultsPlayedCards)
 $resultsWinCards.innerHTML=`You guessed ${winCards.length} cards correctly`
-$resultsPage.appendChild($resultsWinCards)
-let $resultsLoseCards = document.createElement("div")
+$resultsBlock.appendChild($resultsWinCards)
 $resultsLoseCards.innerHTML=`You got ${loseCards.length} cards wrong`
-$resultsPage.appendChild($resultsLoseCards)
+$resultsBlock.appendChild($resultsLoseCards)
 }
+
+// ON-CLICKS GAMEPLAY
 
 
 $leftScreen.addEventListener("click", function(e) {
