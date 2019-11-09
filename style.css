@@ -14,6 +14,7 @@ img {
     max-width:100%;
 
 }
+
 section {
     height:100vh;
 }
@@ -22,14 +23,11 @@ section {
     background-image: url(images/2-birds-background-crop.jpg);
     background-size: cover;
     max-width: 100%;
-    /* margin:-130px auto 130px auto; */
     padding:0;
 }
 
 
 .btn {
-    position:absolute;
-    z-index:2;
     margin-top: 180px;
     padding: 10px 20px;
     text-transform: uppercase;
@@ -39,6 +37,12 @@ section {
 
     display: flex;
     justify-content: center;
+}
+
+#stopPlaying {
+    position:absolute;
+    bottom: 70px;
+    z-index:2;
 }
 
 .inactive {
@@ -71,9 +75,14 @@ h1 {
     z-index: 1;
 } 
 
-.stackedcards {
+.cards-container {
     height:60vh;
+}
+
+
+.stackedcards {
     width: 30%;
+    height: auto;
     position: relative;
     z-index: 1111;
     margin: 0 auto;
@@ -82,30 +91,30 @@ h1 {
     pointer-events:none;
 }   
 
-h3 {
-    position: relative;
-    margin-top:40vh;
-    text-align:center;
-    z-index: 1113  
+.polaroid {
+    display: block; 
+    width: inherit; 
+    background: white;
+    padding: 20px 20px 50px;
+    box-shadow: 0 4px 6px rgba(0,0,0,.3);
 }
+
 .firstCard {
-    height:60vh;
+    width:100%;
     margin:12vh auto;
     position: absolute;
     z-index: 1111
 }
 
 .secondCard {
-    /* width:95%; */
-    height:95%;
+    width:95%;
     margin:12vh auto;
     position: absolute; top:-1em; 
     z-index: 1110
 }
 
 .thirdCard {
-    /* width:90%; */
-    height:90%;
+    width:90%;
     align-self:right;
     margin:12vh auto;
     position: absolute; top:-2em;
@@ -113,17 +122,10 @@ h3 {
 }
 
 .fourthCard {
-    /* width:85%; */
-    height:85%;
+    width:85%;
     margin:12vh auto;
     position: absolute; top:-3em; 
     z-index: 1108
-}
-
-.background-text {
-    font-size: 200%;
-    margin-top: 50vh;
-    text-align: center
 }
 
 
