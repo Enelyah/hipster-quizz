@@ -14,10 +14,10 @@ let $fourthCard = document.getElementById("4thCard");
 let $feedbackText = document.getElementById("feedback-text");
 
 let $audioWin = document.createElement("audio");
-$audioWin.setAttribute("src", "sounds/Winning.mp3");
+$audioWin.setAttribute("src", "sounds/yababy.mp3");
 
 let $audioLose = document.createElement("audio");
-$audioLose.setAttribute("src", "sounds/Losing.mp3");
+$audioLose.setAttribute("src", "sounds/Losing-goat.mp3");
 
 let $startPlayingButton = document.getElementById("startPlaying");
 let $stopPlayingButton = document.getElementById("stopPlaying");

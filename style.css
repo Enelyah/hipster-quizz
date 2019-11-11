@@ -64,7 +64,12 @@ h1 {
     font-family: Baloo, cursive;
     position:absolute;
     bottom: 80px;
-    z-index:2002;
+    z-index:2012;
+}
+
+.btn:hover {
+    font-size:1.3em;
+    background-color: rgba(82, 33, 82, 0.2);
 }
 
 .button-zone {
@@ -175,11 +180,13 @@ h1 {
     margin: -10px auto 0px;
     padding: 10px 20px;
     width:30vw;
-    height: 60vh;
+    height: 70vh;
     text-align:center;
     position: relative;
     z-index: 1111;
-    display:block;
+    display:flex;
+    align-items: center;
+    flex-direction: column;
     background: rgba(255, 255, 255, 0.5);
     border: 3px solid purple;
 }
